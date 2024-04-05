@@ -40,6 +40,6 @@ The findings from this project have been published in the following research pap
 - **Conference/Journal:** International Journal For Research in Applied Science and Engineering Technology
 - **Publication Date:** November 2023
 
-You can access the paper [here](path/to/your/file.pdf).
+You can access the paper [here](monitoring-of-road-irregularities-using-data-analytics/IJRASET PAPER MONITORING OF ROAD IRREGULARITIES.pdf).
 
 ```markdown
