@@ -31,4 +31,15 @@ Of course! Here's the updated README markdown code:
 
 I would like to thank Chinmay Ingale for his valuable contributions. We worked on this project together, and his input greatly improved its quality.
 
+## Research Paper
+
+The findings from this project have been published in the following research paper:
+
+- **Title:** Monitoring Of Road Irregularities using Data Analytics
+- **Authors:** Madhuri Manohar Barhate, Chinmay Satish Inamdar, Harshit Mahendrakumar Inani, Yuvraj Shailesh Inamdar, Subodh Sunil Humne, Harsh Prakash Hulenwar, Chinmay Dnyaneshwar Ingale
+- **Conference/Journal:** International Journal For Research in Applied Science and Engineering Technology
+- **Publication Date:** November 2023
+
+You can access the paper [here](path/to/your/file.pdf).
+
 ```markdown
