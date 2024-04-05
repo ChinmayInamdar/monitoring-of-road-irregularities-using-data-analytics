@@ -1,0 +1,61 @@
+code to filter out data
+
+import numpy as np
+import pandas as pd
+import os
+
+class KalmanFilter:
+    def __init__(self, process_variance, measurement_variance, estimated_value=0, estimation_error=1):
+        self.estimated_value = estimated_value
+        self.estimation_error = estimation_error
+        self.process_variance = process_variance
+        self.measurement_variance = measurement_variance
+
+    def update(self, measurement):
+        # Prediction
+        prediction = self.estimated_value
+        prediction_error = self.estimation_error + self.process_variance
+
+        # Update
+        kalman_gain = prediction_error / (prediction_error + self.measurement_variance)
+        self.estimated_value = prediction + kalman_gain * (measurement - prediction)
+        self.estimation_error = (1 - kalman_gain) * prediction_error
+
+        return self.estimated_value
+
+# Load data from CSV files
+input_csv_file = '/content/stationary3_with noise.csv'  # Replace with your input CSV file path
+
+# Extract the file name from the input path (without the file extension)
+input_file_name = os.path.splitext(os.path.basename(input_csv_file))[0]
+
+data = pd.read_csv(input_csv_file)
+
+# Adjust these values based on your needs
+process_variance = 1e-5
+measurement_variance = 1e-1
+
+# Specify the column names from your CSV file
+x_column = 'X'  # Replace with the actual column name in your CSV file
+y_column = 'Y'  # Replace with the actual column name in your CSV file
+z_column = 'Z'  # Replace with the actual column name in your CSV file
+
+# Apply Kalman filter to each axis
+kf_x = KalmanFilter(process_variance, measurement_variance)
+kf_y = KalmanFilter(process_variance, measurement_variance)
+kf_z = KalmanFilter(process_variance, measurement_variance)
+
+filtered_x = [kf_x.update(x) for x in data[x_column]]
+filtered_y = [kf_y.update(y) for y in data[y_column]]
+filtered_z = [kf_z.update(z) for z in data[z_column]]
+
+# Create a new DataFrame with the filtered data
+filtered_data = pd.DataFrame({'filtered_x': filtered_x, 'filtered_y': filtered_y, 'filtered_z': filtered_z})
+
+# Create a new CSV file name in the format "filtered_fileName.csv"
+output_csv_file = f'filtered_{input_file_name}.csv'
+
+# Save the filtered data to the new CSV file
+filtered_data.to_csv(output_csv_file, index=False)
+
+print(f"Filtered data saved to {output_csv_file}")

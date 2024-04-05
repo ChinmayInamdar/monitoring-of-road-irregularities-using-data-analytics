@@ -1,0 +1,16 @@
+code to find mean
+
+import pandas as pd
+import numpy as np
+
+# Load filtered data for each trial from CSV files
+trial1_data = pd.read_csv('filtered_stationary1_with noise.csv')
+trial2_data = pd.read_csv('filtered_stationary2_with noise.csv')
+trial3_data = pd.read_csv('filtered_stationary3_with noise.csv')
+
+# Calculate the mean for each timestamp across the three trials
+mean_data = (trial1_data + trial2_data + trial3_data) / 3
+
+# Save the mean data to a new CSV file
+mean_data.to_csv('mean_filtered_data_stationary_road.csv', index=False)
+

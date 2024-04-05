@@ -1,0 +1,28 @@
+code to plot the graphs
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Read the data from the CSV file
+data = pd.read_csv("/content/time,x,y,z3.csv")
+
+# Extract the columns
+time = data["Time"]
+x = data["X"]
+y = data["Y"]
+z = data["Z"]
+
+# Create a figure and axis for the plot
+plt.figure(figsize=(12, 6))
+plt.plot(time, x, label='X-axis')
+plt.plot(time, y, label='Y-axis')
+plt.plot(time, z, label='Z-axis')
+
+# Add labels and a legend
+plt.xlabel("Time")
+plt.ylabel("Acceleration")
+plt.legend()
+
+# Show the plot
+plt.title("Accelerometer Data Over Time -- time,x,y,z3 --3")
+plt.show()
